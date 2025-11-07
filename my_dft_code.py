@@ -1,6 +1,6 @@
 import numpy as np
-import math
-import cmath
+import math, cmath
+import matplotlib.pyplot as plt
 
 def DFT(x):
     N = len(x)
@@ -11,7 +11,6 @@ def DFT(x):
         for n in range(N):
             power = -2j * math.pi * k * n/N
             s += x[n] * cmath.exp(power)
-
         X.append(s)
     return np.array(X)
 
@@ -23,10 +22,8 @@ x = 3*np.sin(2*np.pi*100*t) + 2*np.sin(2*np.pi*1000*t) + 10*np.sin(2*np.pi*2400*
 # x = 3*np.sin(2*np.pi*100*t)
 
 X = DFT(x)
-
 freqs = np.fft.fftfreq(len(x), 1/fs)
-
-import matplotlib.pyplot as plt
 half = len(x)//2
+
 plt.plot(freqs[:half], np.abs(X[:half])/len(x))
 plt.show()
