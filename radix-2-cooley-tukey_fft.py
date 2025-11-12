@@ -22,7 +22,6 @@ def FFT(x):
 def next_power2(n):
     return 1 << (n-1).bit_length()
 
-
 fs = 8000
 T = 1.0
 t = np.linspace(0, T, int(fs*T), endpoint=False)
